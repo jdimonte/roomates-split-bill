@@ -64,24 +64,19 @@ function Users() {
             <br></br>
             <table className="users">
                 <tbody>
-                    {users.map((element, index) =>
+                    {/* {users.map((element, index) =>
                         <tr className="entry" key={element.name}>
                             <td>{`${index + 1}.`}</td>
                             <td className="name">{`${element.name} `}</td>
                             <buttton onClick={removeUser(index)} >[x]</buttton>
                         </tr>
-                    )}
+                    )} */}
                 </tbody>
             </table>
             <button variant="outlined" onClick={clearUsers()}>
                 Clear Users
             </button>
             <p> Select Items for {user}</p>
-            <Link to="/summary">
-                <button variant="outlined">
-                    Costs
-                </button>
-            </Link>
             <table className="items">
                 <tbody>
                     {items.map((element, index) =>
@@ -93,6 +88,11 @@ function Users() {
                     )}
                 </tbody>
             </table>
+            <Link to="/summary">
+                <button variant="outlined">
+                    Costs
+                </button>
+            </Link>
         </div>
     );
 }
