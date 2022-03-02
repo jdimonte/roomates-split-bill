@@ -25,10 +25,9 @@ const Items = () => {
         localStorage.setItem("items", JSON.stringify(items));
     }
 
-
     return (
         <div>
-            <p><h><br></br>Items</h></p>
+            <p><br></br>Items</p>
             <form>
                 ---------------------------------------------------------------------
                 <br></br>

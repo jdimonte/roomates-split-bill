@@ -37,10 +37,10 @@
   }
 }
 
-.userNotSelected {
+.NotSelected {
   color: blue
 }
 
-.userSelected {
+.Selected {
   color: red
 }
