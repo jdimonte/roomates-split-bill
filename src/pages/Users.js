@@ -26,6 +26,15 @@ function Users() {
         return initialValue || "a User";
     });
 
+    let [selectedUser, setSelectedUser] = useState(0);
+
+    let [selectedItems, setSelectedItems] = useState(() => {
+        // getting stored value
+        const saved = localStorage.getItem("selectedItems");
+        const initialValue = JSON.parse(saved);
+        return initialValue || "[]";
+    });
+
     function handleClick() {
         console.log("Submit button clicked!");
         users = JSON.parse(localStorage.getItem("users") || "[]");
@@ -34,15 +43,33 @@ function Users() {
     }
 
     function removeUser(index) {
+        console.log(index)
+        /*
         console.log("Removing User")
         user = JSON.parse(localStorage.getItem("users") || "[]");
         localStorage.removeItem(user);
         console.log(index)
+        */
     }
+
+    function selectUser(index) {
+        selectedUser = index;
+        console.log("Selected User:", index, " ", selectedUser)
+        setSelectedUser(index)
+        localStorage.setItem("selectedUser", index)
+        console.log("AHHH")
+    }
+
+    function selectItem(index) {
+        console.log(index)
+    }
+
 
     function clearUsers() {
         //users = []
         //localStorage.setItem("users", JSON.stringify(users));
+        console.log(users)
+        console.log(selectedUser)
     }
 
     useEffect(() => {
@@ -64,16 +91,18 @@ function Users() {
             <br></br>
             <table className="users">
                 <tbody>
-                    {/* {users.map((element, index) =>
-                        <tr className="entry" key={element.name}>
-                            <td>{`${index + 1}.`}</td>
-                            <td className="name">{`${element.name} `}</td>
-                            <buttton onClick={removeUser(index)} >[x]</buttton>
-                        </tr>
-                    )} */}
+                    {
+                        users.map((element, index) =>
+                            <tr className="entry" key={element.name}>
+                                <td>{`${index + 1}.`}</td>
+                                <td className="name">{`${element.name} `}</td>
+                                {(selectedUser == index) ? <button className="userSelected" onClick={() => selectUser(index)} >Select User</button> : <button className="userNotSelected" onClick={() => selectUser(index)} >Select User</button>}
+                            </tr>
+                        )
+                    }
                 </tbody>
             </table>
-            <button variant="outlined" onClick={clearUsers()}>
+            <button variant="outlined" onClick={() => clearUsers()}>
                 Clear Users
             </button>
             <p> Select Items for {user}</p>
@@ -83,7 +112,8 @@ function Users() {
                         <tr className="entry" key={element.name}>
                             <td>{`${index + 1}.`}</td>
                             <td className="name">{`${element.name} `}</td>
-                            <td className="cost">{`${element.cost} `}</td>
+                            <td className="cost">${`${element.cost} `}</td>
+                            <button onClick={() => selectItem(index)} >Select Item</button>
                         </tr>
                     )}
                 </tbody>

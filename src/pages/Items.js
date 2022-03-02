@@ -58,7 +58,7 @@ const Items = () => {
                         <tr className="entry" key={element.name}>
                             <td>{`${index + 1}.`}</td>
                             <td className="name">{`${element.name} `}</td>
-                            <td className="cost">{`${element.cost} `}</td>
+                            <td className="cost">${`${element.cost} `}</td>
                         </tr>
                     )}
                 </tbody>
@@ -66,7 +66,7 @@ const Items = () => {
             <br></br>
             <Link to="/users">
                 <button variant="outlined">
-                    See Users
+                    Divide Items
                 </button>
             </Link>
             <br></br>
