@@ -46,14 +46,8 @@ function Users() {
         selectedItems = []
         users.push({ name, selectedItems })
         localStorage.setItem("users", JSON.stringify(users));
-        /*
-        let newUsers = JSON.parse(users)
-        newUsers.push({ name, selectedItems });
-        localStorage.setItem("users", JSON.stringify(newUsers));
         localStorage.setItem("setSelectedUser", "0");
-        setSelectedUser("0");
-        setUsers(JSON.stringify(newUsers))
-        */
+        setSelectedUser(0);
     }
 
     function removeUser(index) {
@@ -83,6 +77,8 @@ function Users() {
             }
             localStorage.setItem("users", JSON.stringify(users));
         }
+        users = JSON.parse(localStorage.getItem("users") || "[]");
+        setUsers(users);
     }
 
 
