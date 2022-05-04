@@ -26,28 +26,26 @@ const Items = () => {
     }
 
     return (
-        <div>
-            <p><br></br>Items</p>
+        <div className="background">
+            <p className="large-text"><br></br>Items</p>
             <form>
-                ---------------------------------------------------------------------
-                <br></br>
-                <input
+                <hr className="line-break" />
+                <input className="input-style"
                     type="text" name="item" size="20" placeholder="Enter Item Name"
                     onChange={(e) => setName(e.target.value)}
                 />
                 &emsp;
-                <input
+                <input className="input-style"
                     type="number" name="cost" size="10" placeholder="Enter Cost in $" step="0.01" min="0.01"
                     onChange={(e) => setCost(e.target.value)}
                 />
                 &emsp;
-                <button type="submit" formaction="#"
+                <button className="button-style" type="submit" formaction="#"
                     onClick={addItem}
                 >
                     Add Item
                 </button>
-                <br></br>
-                ---------------------------------------------------------------------
+                <hr className="line-break" />
             </form>
 
             <br></br>
@@ -64,7 +62,7 @@ const Items = () => {
             </table>
             <br></br>
             <Link to="/users">
-                <button variant="outlined">
+                <button variant="outlined" className="button-style">
                     Divide Items
                 </button>
             </Link>

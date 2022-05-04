@@ -67,8 +67,8 @@ function Summary() {
 
 
     return (
-        <div>
-            <button onClick={calculateCosts}>
+        <div className="background">
+            <button className="button-style" onClick={calculateCosts}>
                 Calculate Costs!
             </button>
             <table className="users">
@@ -85,7 +85,7 @@ function Summary() {
                 </tbody>
             </table>
             <Link to="/">
-                <button variant="outlined">
+                <button variant="outlined" className="button-style">
                     Done
                 </button>
             </Link>

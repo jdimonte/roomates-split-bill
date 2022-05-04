@@ -84,16 +84,15 @@ function Users() {
     }
 
     return (
-        <div>
-            <p>Add Users</p>
+        <div className='background'>
+            <p className='large-text'>Add Users</p>
             <form >
                 <label>
-                    Name:
-                    <input type="text" name="name" onChange={(e) => setName(e.target.value)}
+                    <input className="input-style" type="text" name="name" onChange={(e) => setName(e.target.value)}
                         placeholder="Name"
                         aria-label="fullname" />
                 </label>
-                <input type="submit" value="Add User" onClick={addUser} />
+                <input className="button-style" type="submit" value="Add User" onClick={addUser} />
             </form>
             <br></br>
             <table className="users">
@@ -103,16 +102,16 @@ function Users() {
                             <tr className="entry" key={element.name}>
                                 <td>{`${index + 1}.`}</td>
                                 <td className="name">{`${element.name} `}</td>
-                                {(selectedUser === index) ? <button className="Selected" onClick={() => selectUser(index)} >User is Selected</button> : <button className="NotSelected" onClick={() => selectUser(index)} >Select User</button>}
+                                {(selectedUser === index) ? <button className="button-style Selected" onClick={() => selectUser(index)} >Selected</button> : <button className="button-style NotSelected" onClick={() => selectUser(index)} >Not Selected</button>}
                             </tr>
                         )
                     }
                 </tbody>
             </table>
-            <button variant="outlined" onClick={() => clearUsers()}>
+            <button variant="outlined" className="button-style" onClick={() => clearUsers()}>
                 Clear Users
             </button>
-            {users.length === 0 ? <p>Please Add Users</p> : <p> Select Items for User #{selectedUser + 1}</p>}
+            {users.length === 0 ? <p className="regular-text">Please Add Users</p> : <p className="regular-text"> Select Items for User #{selectedUser + 1}</p>}
             <table className="items">
                 <tbody>
                     {items.map((element, index) =>
@@ -120,13 +119,13 @@ function Users() {
                             <td>{`${index + 1}.`}</td>
                             <td className="name">{`${element.name} `}</td>
                             <td className="cost">${`${element.cost} `}</td>
-                            {users.length !== 0 ? (users[selectedUser]["selectedItems"].indexOf(index) === -1) ? <button className="NotSelected" onClick={() => selectItem(index)} >Select Item</button> : <button className="Selected" onClick={() => selectItem(index)} >Item is Selected</button> : <td></td>}
+                            {users.length !== 0 ? (users[selectedUser]["selectedItems"].indexOf(index) === -1) ? <button className="button-style NotSelected" onClick={() => selectItem(index)} >Not Selected</button> : <button className="button-style Selected" onClick={() => selectItem(index)} >Selected</button> : <td></td>}
                         </tr>
                     )}
                 </tbody>
             </table>
             <Link to="/summary">
-                <button variant="outlined">
+                <button variant="outlined" className="button-style">
                     Costs
                 </button>
             </Link>
