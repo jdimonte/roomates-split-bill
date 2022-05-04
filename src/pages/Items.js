@@ -5,8 +5,8 @@ const Items = () => {
     let [items, setItem] = useState(() => {
         // getting stored value
         const saved = localStorage.getItem("items");
-        const initialValue = JSON.parse(saved);
-        return initialValue || "[]";
+        const initialValue = JSON.parse(saved || "[]");
+        return initialValue;
     });
 
     const [name, setName] = useState("")

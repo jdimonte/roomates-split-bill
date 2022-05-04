@@ -6,34 +6,28 @@ function Users() {
     let [users, setUsers] = useState(() => {
         // getting stored value
         const saved = localStorage.getItem("users");
-        const initialValue = JSON.parse(saved);
-        return initialValue || "[]";
+        const initialValue = JSON.parse(saved || "[]");
+        return initialValue;
     });
 
     let [items, setItem] = useState(() => {
         const saved = localStorage.getItem("items");
-        const initialValue = JSON.parse(saved);
-        return initialValue || "[]";
+        const initialValue = JSON.parse(saved || "[]");
+        return initialValue;
     });
 
     let [selectedUser, setSelectedUser] = useState(() => {
         const saved = localStorage.getItem("selectedUser");
-        const initialValue = JSON.parse(saved);
-        return initialValue || "0";
+        const initialValue = JSON.parse(saved || "0");
+        return initialValue;
     });
 
     const [name, setName] = useState("")
 
     let [selectedItems, setSelectedItems] = useState(() => {
         const saved = localStorage.getItem("selectedItems");
-        const initialValue = JSON.parse(saved);
-        return initialValue || "[]";
-    });
-
-    const [user, setUser] = useState(() => {
-        const saved = localStorage.getItem("user");
-        const initialValue = JSON.parse(saved);
-        return initialValue || "a User";
+        const initialValue = JSON.parse(saved || "[]");
+        return initialValue;
     });
 
     useEffect(() => {
@@ -84,8 +78,9 @@ function Users() {
 
     function clearUsers() {
         console.log(users)
-        //users = [];
-        //localStorage.setItem("users", JSON.stringify(users));
+        users = [];
+        localStorage.setItem("users", JSON.stringify(users));
+        localStorage.setItem("selectedItems", JSON.stringify(users));
     }
 
     return (
@@ -125,7 +120,7 @@ function Users() {
                             <td>{`${index + 1}.`}</td>
                             <td className="name">{`${element.name} `}</td>
                             <td className="cost">${`${element.cost} `}</td>
-                            {(users.length !== 0) ? (users[selectedUser]["selectedItems"].indexOf(index) === -1) ? <button className="NotSelected" onClick={() => selectItem(index)} >Select Item</button> : <button className="Selected" onClick={() => selectItem(index)} >Item is Selected</button> : <td></td>}
+                            {users.length !== 0 ? (users[selectedUser]["selectedItems"].indexOf(index) === -1) ? <button className="NotSelected" onClick={() => selectItem(index)} >Select Item</button> : <button className="Selected" onClick={() => selectItem(index)} >Item is Selected</button> : <td></td>}
                         </tr>
                     )}
                 </tbody>
